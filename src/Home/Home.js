@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
-    componentWillMount() {
+    componentWillMount(){
+        
         const { isAuthenticated, getProfile } = this.props.auth;
 
         if (isAuthenticated() ) {
@@ -12,34 +13,34 @@ class Home extends Component {
     login() {
         this.props.auth.login();
     }
-
-    render() {
+    render(){
         const { isAuthenticated } = this.props.auth;
         return (
             <div className="container">
                 <div className="jumbotron">
-                    <h1>Welcome to ReactChat!</h1>
+                    <h1>Welcome to chat</h1>
                     {
                         !isAuthenticated() && (
-                            <div>
-                                <p>We need you to sign in/sign up with Auth0 before you can access our chat. 😁</p>
-                                <p><a className="btn btn-primary btn-lg" onClick={this.login.bind(this)}>Login</a></p>
-                            </div>
-                        )
+                        <div>
+                            <p>we need you to sign in with auth before u can enters</p>
+                            <p><a className="btn btn primary btnk-lg" onClick={this.login.bind(this)}>login</a></p>
+                        </div>
+                    )
                     }
                     {
                         isAuthenticated() && (
                             <div>
-                                <p>Let's chat. 😁</p>
+                                <p>lets chat</p>
                                 <Link className="btn btn-primary btn-lg" to="chat">Chat</Link>
                             </div>
                         )
                     }
                 </div>
-                {this.props.children}
+
+                {this.props.children }
             </div>
+
         );
     }
 }
-
 export default Home;
